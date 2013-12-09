@@ -351,10 +351,11 @@ public class BluetoothPbapVcardManager {
                 for (contactCursor.moveToFirst(); !contactCursor.isAfterLast(); contactCursor
                         .moveToNext()) {
                     String name = contactCursor.getString(nameIndex);
+                    long id = contactCursor.getLong(CONTACTS_ID_COLUMN_INDEX);
                     if (TextUtils.isEmpty(name)) {
                         name = mContext.getString(android.R.string.unknownName);
                     }
-                    nameList.add(name);
+                    nameList.add(name + "," + id);
                 }
             }
         } finally {
@@ -462,7 +463,7 @@ public class BluetoothPbapVcardManager {
                         name = mContext.getString(android.R.string.unknownName);
                     }
                     if (V) Log.v(TAG, "got name " + name + " by number " + phoneNumber + " @" + id);
-                    tempNameList.add(name);
+                    tempNameList.add(name + "," + id);
                 }
             }
         } finally {
