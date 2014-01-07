@@ -570,7 +570,7 @@ public class BluetoothMapObexServer extends ServerRequestHandler {
         HeaderSet replyHeaders = new HeaderSet();
         BluetoothMapAppParams outAppParams = new BluetoothMapAppParams();
         BluetoothMapMessageListing outList;
-        if(folderName == null) {
+        if(folderName == null || folderName.length() == 0 ) {
             folderName = mCurrentFolder.getName();
         } else if(folderName.equalsIgnoreCase("draft") && mMasId ==1) {
             folderName="Drafts";
